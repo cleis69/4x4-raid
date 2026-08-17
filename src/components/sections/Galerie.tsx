@@ -1,5 +1,5 @@
 import { galerie } from '@/data/medias'
-import { Figure, Reveal, Section } from '@/components/ui/Primitives'
+import { Reveal, Section } from '@/components/ui/Primitives'
 import { cn } from '@/lib/utils'
 
 /**

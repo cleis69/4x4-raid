@@ -3,6 +3,7 @@ import {
   Group,
   Mesh,
   MeshStandardMaterial,
+  type MeshStandardMaterialParameters,
   Object3D,
   Quaternion,
   Scene,
@@ -104,7 +105,7 @@ export class Vehicle {
     color: number,
     roughness: number,
     metalness: number,
-    extra?: Partial<MeshStandardMaterial>,
+    extra?: MeshStandardMaterialParameters,
   ) {
     const m = new MeshStandardMaterial({ color, roughness, metalness, ...extra })
     m.envMapIntensity = 1
