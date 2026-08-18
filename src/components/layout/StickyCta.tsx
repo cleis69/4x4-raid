@@ -23,7 +23,7 @@ export function StickyCta() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [pathname])
 
-  if (pathname === '/contact') return null
+  if (pathname === '/contact/' || pathname === '/contact') return null
 
   return (
     <div
@@ -34,7 +34,7 @@ export function StickyCta() {
     >
       <div className="container grid grid-cols-[auto_1fr] items-center gap-3 py-3">
         <a
-          href={`tel:${site.contact.phoneHref}`}
+          href={`tel:${site.phoneHref}`}
           aria-label="Appeler 4x4-raid"
           className="flex h-12 w-12 items-center justify-center rounded-pill border border-line-strong text-bone"
         >
@@ -43,7 +43,7 @@ export function StickyCta() {
           </svg>
         </a>
         <Link
-          to="/contact"
+          to="/contact/"
           className="flex h-12 items-center justify-center gap-2 rounded-pill bg-sand font-display text-eyebrow uppercase text-ink"
         >
           Créer mon aventure <span aria-hidden>→</span>
