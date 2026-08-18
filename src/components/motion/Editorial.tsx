@@ -138,10 +138,10 @@ export function SectionHeader({
   className?: string
 }) {
   return (
-    <div className={cn('flex flex-col gap-8 md:flex-row md:items-end md:justify-between', className)}>
+    <div className={cn('flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-12', className)}>
       <div className="max-w-[22ch]">
         <p className="eyebrow reveal">{eyebrow}</p>
-        <h2 className="reveal mt-7 text-display-lg" style={{ '--reveal-delay': '80ms' } as React.CSSProperties}>
+        <h2 className="reveal mt-5 text-display-lg" style={{ '--reveal-delay': '80ms' } as React.CSSProperties}>
           {title}
         </h2>
       </div>

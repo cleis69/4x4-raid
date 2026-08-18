@@ -45,10 +45,10 @@ export function CrossLinks({
   if (cards.length === 0) return null
 
   return (
-    <section className="border-t border-line bg-surface py-section">
+    <section className="border-t border-line bg-surface py-section-sm">
       <div className="container">
         <p className="eyebrow reveal">{title}</p>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-8 grid gap-5 md:mt-10 md:grid-cols-3 md:gap-6">
           {cards.map((c, i) => (
             <Link
               key={c.href}

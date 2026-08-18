@@ -94,9 +94,9 @@ export default function Home() {
       <Hero />
 
       {/* ═══ TEXTE INDEXÉ — colonne étroite, beaucoup de vide ═══ */}
-      <Section>
+      <Section size="sm">
         <div className="container">
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="grid gap-8 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
               <DisplayIndex
                 index="01"
@@ -143,7 +143,7 @@ export default function Home() {
       </Section>
 
       {/* ═══ RUPTURE TYPOGRAPHIQUE ═══════════════════════════════ */}
-      <div className="fade-x flex select-none overflow-hidden border-y border-line py-6" aria-hidden>
+      <div className="fade-x flex select-none overflow-hidden border-y border-line py-5" aria-hidden>
         <div className="flex shrink-0 animate-sand-drift">
           {[0, 1].map((copy) => (
             <div key={copy} className="flex shrink-0">
@@ -178,14 +178,14 @@ export default function Home() {
               </Link>
             }
           />
-          <div className="reveal mt-16">
+          <div className="reveal mt-10 md:mt-12">
             <FanCards cards={familles} />
           </div>
         </div>
       </Section>
 
       {/* ═══ BLOC ASYMÉTRIQUE — l'image déborde vers le bord ═════ */}
-      <Section>
+      <Section size="sm">
         <div className="container">
           <SplitEditorial
             offset
@@ -203,9 +203,9 @@ export default function Home() {
           >
             <div className="reveal" style={{ '--reveal-delay': '120ms' } as React.CSSProperties}>
               <p className="eyebrow">Votre guide</p>
-              <h2 className="mt-7 text-display-md">Jean-Luc Miolane</h2>
+              <h2 className="mt-5 text-display-md">Jean-Luc Miolane</h2>
               <p className="mt-4 font-display text-display-sm text-sand">« Le Renard du Désert »</p>
-              <p className="mt-7 max-w-measure leading-relaxed text-muted">
+              <p className="mt-6 max-w-measure leading-relaxed text-muted">
                 Plus de 45 ans d'expérience des raids et du sable, installé au Maroc
                 depuis 25 ans. Il est présent sur toutes les opérations : c'est lui
                 qui trace, qui ouvre la piste et qui répare.
@@ -222,7 +222,7 @@ export default function Home() {
       </Section>
 
       {/* ═══ CHIFFRE MONUMENTAL SUR PHOTO ═══════════════════════ */}
-      <section className="grain relative flex min-h-[80svh] items-center overflow-hidden">
+      <section className="grain relative flex min-h-[58svh] items-center overflow-hidden md:min-h-[64svh]">
         <div className="absolute inset-0">
           <ParallaxImage
             src="/media/dunes-franchissement.jpg"
@@ -234,10 +234,10 @@ export default function Home() {
           <div className="absolute inset-0 bg-ink/62" />
         </div>
 
-        <div className="container relative z-10 py-section">
+        <div className="container relative z-10 py-section-sm">
           <p className="eyebrow reveal">Boucle Sud — Jour 04</p>
           <p
-            className="reveal mt-9 font-display text-[clamp(4rem,17vw,15rem)] font-bold leading-[0.82] tracking-tighter"
+            className="reveal mt-7 font-display text-[clamp(4rem,17vw,15rem)] font-bold leading-[0.82] tracking-tighter"
             style={{ '--reveal-delay': '100ms' } as React.CSSProperties}
           >
             50<span className="text-sand">km</span>
