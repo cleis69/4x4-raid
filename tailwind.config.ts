@@ -40,8 +40,10 @@ export default {
         lead: ['clamp(1.0625rem, 1.4vw, 1.375rem)', { lineHeight: '1.55', letterSpacing: '-0.01em' }],
       },
       spacing: {
-        section: 'clamp(5rem, 12vh, 11rem)',
-        'section-sm': 'clamp(3.5rem, 8vh, 7rem)',
+        /* Rythme vertical : compact sur mobile, généreux sans excès sur desktop. */
+        section: 'clamp(3.25rem, 6.5vw, 6.5rem)',
+        'section-sm': 'clamp(2.25rem, 4vw, 4rem)',
+        'section-lg': 'clamp(4.25rem, 8.5vw, 8.5rem)',
       },
       borderRadius: {
         xs: '2px',
