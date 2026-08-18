@@ -143,7 +143,7 @@ export function SectionHeader({
       {(sub || action) && (
         <div className="reveal max-w-measure-tight shrink-0" style={{ '--reveal-delay': '140ms' } as React.CSSProperties}>
           {sub && <p className="text-muted">{sub}</p>}
-          {action && <div className={cn(sub && 'mt-6')}>{action}</div>}
+          {action && <div className={sub ? "mt-6" : undefined}>{action}</div>}
         </div>
       )}
     </div>
