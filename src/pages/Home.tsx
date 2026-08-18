@@ -222,7 +222,7 @@ export default function Home() {
       </Section>
 
       {/* ═══ CHIFFRE MONUMENTAL SUR PHOTO ═══════════════════════ */}
-      <section className="grain relative flex min-h-[58svh] items-center overflow-hidden md:min-h-[64svh]">
+      <section className="grain relative flex min-h-[50svh] items-end overflow-hidden md:min-h-[56svh]">
         <div className="absolute inset-0">
           <ParallaxImage
             src="/media/dunes-franchissement.jpg"
