@@ -231,7 +231,8 @@ export default function Home() {
             ratio="16/9"
             className="!absolute inset-0 h-full w-full"
           />
-          <div className="absolute inset-0 bg-ink/62" />
+          <div className="absolute inset-0 bg-ink/55" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/25" />
         </div>
 
         <div className="container relative z-10 py-section-sm">
