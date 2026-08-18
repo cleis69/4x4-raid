@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://4x4-raid.com/sitemap.xml
