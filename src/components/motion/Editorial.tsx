@@ -100,17 +100,22 @@ export function Section({
   children,
   id,
   tone = 'ink',
+  size = 'base',
   className,
 }: {
   children: React.ReactNode
   id?: string
   tone?: 'ink' | 'surface'
+  /** Amplitude verticale — l'alternance sm/base/lg crée le rythme. */
+  size?: 'sm' | 'base' | 'lg'
   className?: string
 }) {
+  const pad =
+    size === 'sm' ? 'py-section-sm' : size === 'lg' ? 'py-section-lg' : 'py-section'
   return (
     <section
       id={id}
-      className={cn('relative py-section', tone === 'surface' && 'bg-surface', className)}
+      className={cn('relative', pad, tone === 'surface' && 'bg-surface', className)}
     >
       {children}
     </section>
