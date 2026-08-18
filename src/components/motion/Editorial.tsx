@@ -31,7 +31,7 @@ export function DisplayIndex({
       <span className="block font-display text-micro uppercase tracking-[0.3em] text-sand">
         {index}
       </span>
-      <span className="mt-4 block font-display text-display-lg uppercase leading-[0.85] tracking-tight">
+      <span className="mt-4 block font-display text-display-md uppercase leading-[0.85] tracking-tight">
         {word}
       </span>
       {sub && (
@@ -139,9 +139,9 @@ export function SectionHeader({
 }) {
   return (
     <div className={cn('flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-12', className)}>
-      <div className="max-w-[22ch]">
+      <div className="max-w-[30ch] md:max-w-[46%]">
         <p className="eyebrow reveal">{eyebrow}</p>
-        <h2 className="reveal mt-5 text-display-lg" style={{ '--reveal-delay': '80ms' } as React.CSSProperties}>
+        <h2 className="reveal mt-5 text-display-md" style={{ '--reveal-delay': '80ms' } as React.CSSProperties}>
           {title}
         </h2>
       </div>

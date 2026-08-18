@@ -102,7 +102,7 @@ export default function Home() {
                 index="01"
                 word="Raid"
                 sub="Maroc · sur mesure"
-                className="reveal lg:sticky lg:top-32"
+                className="reveal lg:sticky lg:top-28"
               />
             </div>
 
@@ -166,7 +166,7 @@ export default function Home() {
         <div className="container">
           <SectionHeader
             eyebrow="Nos raids"
-            title={<>Quatre façons<br /><span className="text-muted">de quitter la route</span></>}
+            title={<>Quatre façons <span className="text-muted">de quitter la route</span></>}
             sub="Chaque itinéraire est modulable : le répertoire d'étapes se recombine selon vos jours disponibles, votre rythme et la saison."
             action={
               <Link
@@ -265,13 +265,13 @@ export default function Home() {
         <div className="container">
           <p className="eyebrow reveal justify-center">Prochaine étape</p>
           <h2
-            className="reveal mx-auto mt-8 max-w-[18ch] text-display-lg"
+            className="reveal mx-auto mt-6 max-w-[22ch] text-display-md"
             style={{ '--reveal-delay': '100ms' } as React.CSSProperties}
           >
             Composons votre raid 4×4 au Maroc sur mesure
           </h2>
           <p
-            className="reveal mx-auto mt-8 max-w-measure text-lead text-muted"
+            className="reveal mx-auto mt-6 max-w-measure text-lead text-muted"
             style={{ '--reveal-delay': '180ms' } as React.CSSProperties}
           >
             Réponse sous {site.responseTime}. Parlez-nous de vos envies, de vos dates
