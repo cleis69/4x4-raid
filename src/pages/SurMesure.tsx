@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Seo } from '@/components/Seo'
 import { SEO } from '@/data/seo'
-import { site } from '@/data/site'
-import { ParallaxImage } from '@/components/motion/ParallaxImage'
-import { Prose, Section, SectionHeader } from '@/components/motion/Editorial'
+import { Prose, Section } from '@/components/motion/Editorial'
 import { PageHero } from '@/components/sections/PageHero'
 import { CrossLinks } from '@/components/sections/CrossLinks'
 

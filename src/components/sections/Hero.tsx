@@ -57,7 +57,7 @@ export function Hero() {
         />
       </div>
 
-      <div className="container relative z-10 pb-14 pt-32 md:pb-20">
+      <div className="container relative z-10 pb-10 pt-28 md:pb-14">
         <p
           className="eyebrow transition-[opacity,transform] duration-[900ms] ease-raid"
           style={{
@@ -70,7 +70,7 @@ export function Hero() {
         </p>
 
         {/* H1 réel, animé mot par mot */}
-        <h1 className="mt-7 max-w-[15ch] font-display text-display-xl font-medium">
+        <h1 className="mt-6 max-w-[15ch] font-display text-display-xl font-medium">
           {words.map((w, i) => (
             <span key={i} className="inline-block overflow-hidden align-bottom">
               <span
@@ -87,7 +87,7 @@ export function Hero() {
           ))}
         </h1>
 
-        <div className="mt-10 grid gap-10 md:grid-cols-[1fr_auto] md:items-end">
+        <div className="mt-8 grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
           <p
             className="max-w-measure-tight text-lead text-bone/85 transition-[opacity,transform] duration-[900ms] ease-raid"
             style={{
@@ -149,7 +149,7 @@ export function Hero() {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="px-3 py-5 first:pl-0 md:px-6">
+    <div className="px-3 py-4 first:pl-0 md:px-6">
       <p className="font-display text-micro uppercase text-muted">{label}</p>
       <p className="mt-1.5 font-display text-sm text-bone md:text-base">{value}</p>
     </div>

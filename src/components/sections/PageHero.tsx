@@ -21,7 +21,7 @@ export function PageHero({ eyebrow, h1, image, imageAlt = '', children, classNam
   return (
     <section
       className={cn(
-        'grain relative flex min-h-[64svh] flex-col justify-end overflow-hidden',
+        'grain relative flex min-h-[46svh] flex-col justify-end overflow-hidden md:min-h-[54svh]',
         className,
       )}
     >
@@ -46,10 +46,10 @@ export function PageHero({ eyebrow, h1, image, imageAlt = '', children, classNam
         </div>
       )}
 
-      <div className="container relative z-10 pb-14 pt-32 md:pb-16">
+      <div className="container relative z-10 pb-10 pt-24 md:pb-14 md:pt-28">
         {eyebrow && <p className="eyebrow reveal">{eyebrow}</p>}
         <h1
-          className="reveal mt-6 max-w-[18ch] font-display text-display-lg font-medium"
+          className="reveal mt-5 max-w-[18ch] font-display text-display-md font-medium"
           style={{ '--reveal-delay': '80ms' } as React.CSSProperties}
         >
           {h1}

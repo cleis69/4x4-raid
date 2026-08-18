@@ -31,7 +31,7 @@ export function DisplayIndex({
       <span className="block font-display text-micro uppercase tracking-[0.3em] text-sand">
         {index}
       </span>
-      <span className="mt-4 block font-display text-display-lg uppercase leading-[0.85] tracking-tight">
+      <span className="mt-4 block font-display text-display-md uppercase leading-[0.85] tracking-tight">
         {word}
       </span>
       {sub && (
@@ -100,17 +100,22 @@ export function Section({
   children,
   id,
   tone = 'ink',
+  size = 'base',
   className,
 }: {
   children: React.ReactNode
   id?: string
   tone?: 'ink' | 'surface'
+  /** Amplitude verticale — l'alternance sm/base/lg crée le rythme. */
+  size?: 'sm' | 'base' | 'lg'
   className?: string
 }) {
+  const pad =
+    size === 'sm' ? 'py-section-sm' : size === 'lg' ? 'py-section-lg' : 'py-section'
   return (
     <section
       id={id}
-      className={cn('relative py-section', tone === 'surface' && 'bg-surface', className)}
+      className={cn('relative', pad, tone === 'surface' && 'bg-surface', className)}
     >
       {children}
     </section>
@@ -133,17 +138,17 @@ export function SectionHeader({
   className?: string
 }) {
   return (
-    <div className={cn('flex flex-col gap-8 md:flex-row md:items-end md:justify-between', className)}>
-      <div className="max-w-[22ch]">
+    <div className={cn('flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-12', className)}>
+      <div className="max-w-[30ch] md:max-w-[46%]">
         <p className="eyebrow reveal">{eyebrow}</p>
-        <h2 className="reveal mt-7 text-display-lg" style={{ '--reveal-delay': '80ms' } as React.CSSProperties}>
+        <h2 className="reveal mt-5 text-display-md" style={{ '--reveal-delay': '80ms' } as React.CSSProperties}>
           {title}
         </h2>
       </div>
       {(sub || action) && (
         <div className="reveal max-w-measure-tight shrink-0" style={{ '--reveal-delay': '140ms' } as React.CSSProperties}>
           {sub && <p className="text-muted">{sub}</p>}
-          {action && <div className={cn(sub && 'mt-6')}>{action}</div>}
+          {action && <div className={sub ? "mt-6" : undefined}>{action}</div>}
         </div>
       )}
     </div>
