@@ -13,8 +13,7 @@ export default function SurMesure() {
       <PageHero
         eyebrow="Raid 4×4"
         h1="Raid 4×4 sur mesure"
-        image="/media/sur-mesure-piste-sable.jpg"
-        imageAlt="Raid 4x4 sur mesure au Maroc, véhicule sur piste sablonneuse"
+        media="dunes-ciel-bleu"
       />
 
       <Section>
@@ -69,7 +68,7 @@ export default function SurMesure() {
         </div>
       </Section>
 
-      <CrossLinks exclude={[SEO.surMesure.path]} />
+      <CrossLinks pick={['marrakech', 'excursions', 'guide']} exclude={[SEO.surMesure.path]} />
     </>
   )
 }

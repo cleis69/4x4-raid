@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { MEDIAS, mediaSrc, mediaSrcSet, type MediaKey } from '@/data/medias'
 import { cn } from '@/lib/utils'
 
 /**
@@ -22,8 +23,7 @@ import { cn } from '@/lib/utils'
  */
 
 type Props = {
-  src: string
-  alt: string
+  media: MediaKey
   /** Amplitude en pixels. Rester sous 80. */
   strength?: number
   className?: string
@@ -31,23 +31,23 @@ type Props = {
   /** Ratio réservé — évite tout décalage de mise en page (CLS). */
   ratio?: string
   priority?: boolean
+  /** Largeur d'affichage : décrit la place occupée, pas le fichier. */
   sizes?: string
-  width?: number
-  height?: number
+  /** Alternative textuelle de remplacement. Par défaut, celle du catalogue. */
+  alt?: string
 }
 
 export function ParallaxImage({
-  src,
-  alt,
+  media,
   strength = 56,
   className,
   imgClassName,
   ratio = '3/2',
   priority = false,
   sizes = '100vw',
-  width = 1600,
-  height = 1067,
+  alt,
 }: Props) {
+  const m = MEDIAS[media]
   const holder = useRef<HTMLDivElement>(null)
   const img = useRef<HTMLImageElement>(null)
 
@@ -92,11 +92,12 @@ export function ParallaxImage({
     >
       <img
         ref={img}
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
+        src={mediaSrc(media)}
+        srcSet={mediaSrcSet(media)}
         sizes={sizes}
+        alt={alt ?? m.alt}
+        width={m.w}
+        height={m.h}
         loading={priority ? 'eager' : 'lazy'}
         decoding={priority ? 'sync' : 'async'}
         className={cn('h-full w-full scale-[1.18] object-cover will-change-transform', imgClassName)}

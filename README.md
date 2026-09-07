@@ -86,6 +86,55 @@ Aucune redirection nécessaire : les URLs ne changent pas.
 `src/three/`, les hooks associés, `public/models/` et la dépendance `three` :
 supprimés. Le bundle retombe à **3 dépendances de production**.
 
+### Les photographies
+
+📍 `src/data/medias.ts` — catalogue, source unique de vérité ·
+📍 `src/components/Picture.tsx` — le seul composant autorisé à écrire un `<img>`
+
+| | Avant | Maintenant |
+|---|---|---|
+| Photos distinctes | 13 | **32** |
+| Format | JPEG 1920 px unique | WebP en 640 / 1280 / 1920 px |
+| `srcset` | absent (le `sizes` seul ne sert à rien) | complet sur **chaque** image |
+| Poids servi à un téléphone | ~2,9 Mo | quelques dizaines de Ko |
+| `alt` | parfois un nom de fichier | rédigé, attaché à la photo |
+
+Les 32 photographies viennent toutes de la médiathèque d'origine — dont une
+vingtaine n'avait jamais été publiée. Aucune page ne partage plus sa photo de
+tête avec une autre, et les huit images de la galerie historique sont
+conservées.
+
+Un repli JPEG n'existe que pour les treize images servies en `og:image` :
+plusieurs robots de réseaux sociaux ne décodent pas le WebP.
+
+Pour régénérer `public/media/` : `bash scripts/medias.sh`.
+
+### La section « Nos raids » est devenue lisible
+
+📍 `src/components/sections/Formules.tsx`
+
+L'éventail de cartes est conservé — quatre tirages légèrement pivotés qui se
+redressent au survol — mais il ne cachait plus rien. Auparavant le texte était
+posé sur la photo et la description n'apparaissait qu'**au survol** : on
+faisait défiler quatre grandes images sans comprendre ce qui était proposé, et
+sur écran tactile la description n'apparaissait jamais.
+
+Désormais chaque carte porte, toujours visibles, **les mêmes trois axes** :
+durée · qui conduit · ce que comprend le format. On ne compare que ce qui est
+aligné.
+
+### Régressions SEO corrigées
+
+Trois fichiers de configuration étaient restés d'une refonte abandonnée qui
+changeait les URLs. Mis en ligne tels quels, ils annulaient le travail :
+
+| Fichier | Ce qu'il faisait | Corrigé en |
+|---|---|---|
+| `public/_redirects` · `vercel.json` | **301 de chacune des 13 URLs positionnées vers une adresse inexistante** (`/raids`, `/destinations`, `/le-guide`…) — 404 sur tout le site | plus aucune 301 depuis WordPress : les URLs ne changent pas. Seule reste la canonicalisation vers la forme avec slash final |
+| `public/_redirects` · `vercel.json` | rewrite attrape-tout `/* → /index.html`, qui servait le HTML de l'**accueil** sur les treize adresses et annulait le prérendu | supprimé. Le serveur sert le fichier prérendu de chaque route |
+| `public/sitemap.xml` | 18 URLs inexistantes, aucune des 13 vraies, et un espace de noms erroné (`sitemap.org` au lieu de `sitemaps.org`) | les 13 URLs réelles, espace de noms valide |
+| `index.html` | `<title>` et `<meta description>` génériques **en plus** de ceux de la page → deux `<title>` par document | métadonnées laissées à `<Seo>` seul |
+
 ### Corrections SEO appliquées (gains, sans risque)
 
 - Bloc « 3 cartes » dupliqué sur les 13 pages → maillage **contextuel**
@@ -115,18 +164,6 @@ contenu reste identique.
 
 ---
 
-## Images — action requise
-
-Les pages pointent vers `/media/…`, pas encore dans le dépôt.
-
-```bash
-bash scripts/telecharger-medias.sh
-```
-
-Le script rapatrie les 14 photographies de 4x4-raid.com. Tant qu'elles viennent
-du CDN WordPress, elles peuvent être bloquées (anti-hotlink) et le site dépend de
-l'ancien hébergement.
-
 ---
 
 ## Formulaire — à brancher
@@ -144,6 +181,9 @@ l'ancien hébergement.
 | Page Actualité | ✅ conservée, contenu propre minimal |
 | Fautes de frappe | ✅ corrigées |
 | Liens partenaires | ⏳ vérifier que les 5 domaines sont actifs |
+| Endpoint du formulaire de contact | ⏳ à brancher (`src/pages/Contact.tsx`) |
+| Pages légales | ⏳ mentions, CGV, confidentialité |
+| Page 404 personnalisée sur Vercel | ⏳ Netlify la sert déjà (`/* /index.html 404`) |
 
 ---
 
@@ -154,7 +194,8 @@ l'ancien hébergement.
 | Syntaxe TypeScript / JSX | ✅ 0 erreur sur 34 fichiers |
 | Imports internes résolus | ✅ 100/100 |
 | 13 URLs = URLs WordPress | ✅ |
-| `npm install` + `npm run build` | ⚠️ **non exécutés** — registre npm inaccessible ici |
-
-➡️ **Première action : `npm install && npm run build`**, puis le `grep` sur
-`dist/` pour confirmer que le texte est bien dans le HTML.
+| `npm install` + `npm run build` | ✅ 13 pages prérendues, 0 erreur |
+| Chaque `<img>` porte un `srcset` | ✅ |
+| Références `/media/…` résolues dans `dist/` | ✅ 100 % |
+| Un seul `<title>` et un seul `<h1>` par page | ✅ |
+| Texte indexé présent dans le HTML servi | ✅ |

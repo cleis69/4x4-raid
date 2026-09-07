@@ -24,8 +24,7 @@ export default function Decouvrir() {
       <PageHero
         eyebrow="Informations"
         h1="Découvrir le Maroc en 4×4, SSV, Buggy et Moto"
-        image="/media/desert-etendue.jpg"
-        imageAlt="Découvrir le Maroc en 4x4 : étendue désertique et relief"
+        media="desert-etendue"
       />
 
       <Section>
@@ -64,7 +63,7 @@ export default function Decouvrir() {
         </div>
       </Section>
 
-      <CrossLinks />
+      <CrossLinks pick={['circuits', 'photos', 'guide']} />
     </>
   )
 }

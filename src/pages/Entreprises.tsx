@@ -15,8 +15,7 @@ export default function Entreprises() {
       <PageHero
         eyebrow="Raids 4×4"
         h1="Raids 4×4 pour entreprises"
-        image="/media/entreprise-convoi.jpg"
-        imageAlt="Raid 4x4 entreprise au Maroc : convoi de véhicules en formation"
+        media="convoi-atlas-enneige"
       />
 
       <Section>
@@ -67,7 +66,7 @@ export default function Entreprises() {
         </div>
       </Section>
 
-      <CrossLinks exclude={[SEO.entreprises.path]} />
+      <CrossLinks pick={['surMesure', 'marrakech', 'temoignages']} exclude={[SEO.entreprises.path]} />
     </>
   )
 }

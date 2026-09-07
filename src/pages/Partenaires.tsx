@@ -23,7 +23,7 @@ export default function Partenaires() {
   return (
     <>
       <Seo seo={SEO.partenaires} />
-      <PageHero eyebrow="Partenaires" h1="Nos partenaires" />
+      <PageHero eyebrow="Partenaires" h1="Nos partenaires" media="oasis-palmeraie" />
 
       <Section>
         <div className="container">
@@ -52,7 +52,7 @@ export default function Partenaires() {
         </div>
       </Section>
 
-      <CrossLinks />
+      <CrossLinks pick={['circuits', 'guide', 'decouvrir']} />
     </>
   )
 }

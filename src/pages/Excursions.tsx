@@ -13,8 +13,7 @@ export default function Excursions() {
       <PageHero
         eyebrow="Excursions 4×4"
         h1="3 excursions 4×4 à Marrakech"
-        image="/media/excursion-journee.jpg"
-        imageAlt="Excursion 4x4 à la journée au départ de Marrakech"
+        media="village-berbere-piste"
       />
 
       <Section>
@@ -51,7 +50,7 @@ export default function Excursions() {
         </div>
       </Section>
 
-      <CrossLinks exclude={[SEO.excursions.path]} />
+      <CrossLinks pick={['marrakech', 'surMesure', 'guide']} exclude={[SEO.excursions.path]} />
     </>
   )
 }

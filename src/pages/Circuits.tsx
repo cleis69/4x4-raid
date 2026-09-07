@@ -13,8 +13,7 @@ export default function Circuits() {
       <PageHero
         eyebrow="Circuits raid 4×4"
         h1="Circuits raid 4×4 au Maroc"
-        image="/media/hero-piste-coucher-soleil.jpg"
-        imageAlt="Raid 4×4 au Maroc sur mesure, véhicule sur piste au coucher du soleil"
+        media="piste-coucher-soleil"
       />
 
       <Section>
@@ -54,7 +53,7 @@ export default function Circuits() {
         </div>
       </Section>
 
-      <CrossLinks exclude={[SEO.circuits.path]} title="Nos familles de raids" />
+      <CrossLinks pick={['surMesure', 'entreprises', 'marrakech']} exclude={[SEO.circuits.path]} title="Nos familles de raids" />
     </>
   )
 }

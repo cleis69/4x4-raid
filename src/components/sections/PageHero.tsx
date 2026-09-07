@@ -1,3 +1,5 @@
+import { Picture } from '@/components/Picture'
+import type { MediaKey } from '@/data/medias'
 import { cn } from '@/lib/utils'
 
 /**
@@ -11,13 +13,13 @@ import { cn } from '@/lib/utils'
 type Props = {
   eyebrow?: string
   h1: string
-  image?: string
-  imageAlt?: string
+  /** Photo de fond, référencée par sa clé de catalogue. */
+  media?: MediaKey
   children?: React.ReactNode
   className?: string
 }
 
-export function PageHero({ eyebrow, h1, image, imageAlt = '', children, className }: Props) {
+export function PageHero({ eyebrow, h1, media, children, className }: Props) {
   return (
     <section
       className={cn(
@@ -25,16 +27,14 @@ export function PageHero({ eyebrow, h1, image, imageAlt = '', children, classNam
         className,
       )}
     >
-      {image && (
+      {media && (
         <div className="absolute inset-0">
-          <img
-            src={image}
-            alt={imageAlt}
-            width={1920}
-            height={1280}
-            loading="eager"
-            decoding="sync"
-            className="h-full w-full scale-[1.04] object-cover"
+          <Picture
+            media={media}
+            sizes="100vw"
+            priority
+            className="h-full w-full"
+            imgClassName="h-full w-full scale-[1.04] object-cover"
           />
           <div
             className="absolute inset-0"

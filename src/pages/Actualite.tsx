@@ -17,7 +17,7 @@ export default function Actualite() {
   return (
     <>
       <Seo seo={SEO.actualite} />
-      <PageHero eyebrow="Informations" h1="Actualité" />
+      <PageHero eyebrow="Informations" h1="Actualité" media="bivouac-dunes-crepuscule" />
 
       <Section>
         <div className="container">
@@ -54,7 +54,7 @@ export default function Actualite() {
         </div>
       </Section>
 
-      <CrossLinks />
+      <CrossLinks pick={['photos', 'circuits', 'temoignages']} />
     </>
   )
 }

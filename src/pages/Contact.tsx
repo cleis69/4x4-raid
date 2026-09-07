@@ -43,7 +43,7 @@ export default function Contact() {
   return (
     <>
       <Seo seo={SEO.contact} jsonLd={localBusinessLd} />
-      <PageHero eyebrow="Contact" h1="Contactez-nous" />
+      <PageHero eyebrow="Contact" h1="Contactez-nous" media="oued-traversee" />
 
       <Section>
         <div className="container grid gap-16 lg:grid-cols-[1.3fr_0.7fr] lg:gap-24">

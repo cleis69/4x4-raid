@@ -29,8 +29,7 @@ export default function Guide() {
       <PageHero
         eyebrow="Votre guide"
         h1="Guide raids 4×4 au Maroc"
-        image="/media/guide-jean-luc.jpg"
-        imageAlt="Jean-Luc Miolane, guide de raids 4x4 au Maroc, au volant sur piste"
+        media="equipe-briefing-plateau"
       />
 
       <Section>
@@ -84,7 +83,7 @@ export default function Guide() {
         </div>
       </Section>
 
-      <CrossLinks />
+      <CrossLinks pick={['temoignages', 'entreprises', 'marrakech']} />
     </>
   )
 }

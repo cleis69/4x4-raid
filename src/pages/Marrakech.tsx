@@ -32,8 +32,7 @@ export default function Marrakech() {
       <PageHero
         eyebrow="Circuits départ de Marrakech"
         h1="Raid 4×4 Marrakech"
-        image="/media/atlas-piste-montagne.jpg"
-        imageAlt="Piste de montagne du Haut-Atlas parcourue en 4x4 au départ de Marrakech"
+        media="dune-descente"
       />
 
       <Section>
@@ -132,7 +131,7 @@ export default function Marrakech() {
         </div>
       </Section>
 
-      <CrossLinks exclude={[SEO.marrakech.path]} />
+      <CrossLinks pick={['surMesure', 'excursions', 'photos']} exclude={[SEO.marrakech.path]} />
     </>
   )
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { site } from '@/data/site'
+import { MEDIAS, mediaSrc, mediaSrcSet } from '@/data/medias'
 import { cn } from '@/lib/utils'
 
 /**
@@ -22,6 +23,13 @@ import { cn } from '@/lib/utils'
 
 const TITLE = 'Les raids de 4×4-raid au Maroc'
 
+/**
+ * Image LCP de tout le site. Elle est chargée en `eager`, en priorité
+ * haute, et préchargée dans le <head> (cf. index.html) : c'est le seul
+ * fichier dont le délai d'arrivée décide de la note Core Web Vitals.
+ */
+const FOND = 'dunes-lever-soleil' as const
+
 export function Hero() {
   const [ready, setReady] = useState(false)
 
@@ -37,12 +45,15 @@ export function Hero() {
       {/* Fond : zoom lent, jamais perceptible consciemment */}
       <div className="absolute inset-0">
         <img
-          src="/media/hero-piste-coucher-soleil.jpg"
-          alt="4x4 en progression sur une piste du Sud marocain au coucher du soleil"
-          width={1920}
-          height={1280}
+          src={mediaSrc(FOND)}
+          srcSet={mediaSrcSet(FOND)}
+          sizes="100vw"
+          alt={MEDIAS[FOND].alt}
+          width={MEDIAS[FOND].w}
+          height={MEDIAS[FOND].h}
           loading="eager"
           decoding="sync"
+          {...({ fetchpriority: 'high' } as Record<string, string>)}
           className={cn(
             'h-full w-full object-cover transition-transform duration-[20000ms] ease-out',
             ready ? 'scale-100' : 'scale-[1.12]',

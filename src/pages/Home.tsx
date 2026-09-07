@@ -4,8 +4,10 @@ import { SEO } from '@/data/seo'
 import { site, terrainWords } from '@/data/site'
 import { Hero } from '@/components/sections/Hero'
 import { ParallaxImage } from '@/components/motion/ParallaxImage'
-import { FanCards, type FanCard } from '@/components/motion/FanCards'
+import { Formules } from '@/components/sections/Formules'
 import { DisplayIndex, Prose, Section, SectionHeader, SplitEditorial } from '@/components/motion/Editorial'
+import { Picture } from '@/components/Picture'
+import type { MediaKey } from '@/data/medias'
 
 /**
  * ─────────────────────────────────────────────────────────────────
@@ -17,9 +19,10 @@ import { DisplayIndex, Prose, Section, SectionHeader, SplitEditorial } from '@/c
  *    Hero plein écran
  *    → texte SEO en colonne étroite, énorme espace négatif
  *    → bandeau typographique défilant (rupture)
- *    → éventail de cartes (les 3 familles de raids)
+ *    → les quatre formules, comparables d'un seul regard
  *    → bloc asymétrique avec image qui déborde vers le bord
  *    → chiffre monumental sur photo pleine largeur
+ *    → témoignages, puis aperçu de la galerie
  *    → CTA
  *
  *  ── SEO ───────────────────────────────────────────────────────
@@ -29,39 +32,44 @@ import { DisplayIndex, Prose, Section, SectionHeader, SplitEditorial } from '@/c
  * ─────────────────────────────────────────────────────────────────
  */
 
-const familles: FanCard[] = [
+/**
+ * Trois voix, trois contextes différents — voyageur fidèle, dirigeant,
+ * première fois. La preuve sociale est l'actif le plus fort du site :
+ * elle était reléguée sur une page interne, elle remonte ici.
+ * Texte intégral et balisage Review : /temoignages/.
+ */
+const PREUVES = [
   {
-    href: '/circuits-raid-4x4-au-maroc/raid-4x4-sur-mesure/',
-    index: '01',
-    title: 'Sur mesure',
-    text: 'Jean-Luc compose votre raid selon vos envies, votre niveau et vos dates.',
-    image: '/media/sur-mesure-piste-sable.jpg',
-    alt: 'Raid 4x4 sur mesure au Maroc, véhicule sur piste sablonneuse',
+    texte:
+      "Un homme brut, honnête, sensible qui adore partager. Sur le hors-piste, l'inattendu est toujours là, mais Jean-Luc encadre, répare, et nous amène toujours à bon port.",
+    auteur: 'Pierre-Laurent Fortès',
+    contexte: '5 séjours avec J.-L. Miolane',
   },
   {
-    href: '/circuits-raid-4x4-au-maroc/raid-4x4-marrakech/',
-    index: '02',
-    title: 'Départ de Marrakech',
-    text: "D'une journée à 14 nuits, par les pistes oubliées du Sud marocain.",
-    image: '/media/atlas-piste-montagne.jpg',
-    alt: 'Piste de montagne du Haut-Atlas parcourue en 4x4 au départ de Marrakech',
+    texte:
+      "Le raid 4×4 nous a enchantés par la diversité des paysages extraordinaires visités et la sécurité offerte sans présence pesante de l'encadrement. Un très bon professionnalisme !",
+    auteur: 'Jean-Christophe Perrichon',
+    contexte: "Directeur Général — L'Oréal DPP (Suisse)",
   },
   {
-    href: '/circuits-raid-4x4-au-maroc/raids-4x4-pour-entreprises/',
-    index: '03',
-    title: 'Entreprises',
-    text: 'Incentive, team-building et séminaires au cœur du désert.',
-    image: '/media/entreprise-convoi.jpg',
-    alt: 'Raid 4x4 entreprise au Maroc : convoi de véhicules en formation',
+    texte:
+      "Je rentre d'un voyage inoubliable : des paysages sublimes, une conduite sportive mais toujours ludique, des bivouacs où rien ne manquait. L'AVENTURE de ma vie de citadine !",
+    auteur: 'Mireille Viala',
+    contexte: 'France',
   },
-  {
-    href: '/circuits-raid-4x4-au-maroc/3-excursions-4x4-a-marrakech/',
-    index: '04',
-    title: 'Excursions',
-    text: 'Trois itinéraires à la journée, pistes et hors-pistes, pique-nique compris.',
-    image: '/media/excursion-journee.jpg',
-    alt: 'Excursion 4x4 à la journée au départ de Marrakech',
-  },
+]
+
+/**
+ * Aperçu de la galerie — quatre terrains.
+ * Ratio unique et volontairement portrait : la bande doit se lire
+ * comme une frise. Des ratios mélangés laisseraient des trous dès
+ * que la grille passe à deux colonnes.
+ */
+const APERCU: readonly MediaKey[] = [
+  'oued-traversee',
+  'ruelle-kasbah-convoi',
+  'erg-dunes',
+  'bivouac-dunes-crepuscule',
 ]
 
 const faqLd = {
@@ -161,13 +169,13 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ═══ ÉVENTAIL — les quatre familles de raids ═════════════ */}
-      <Section tone="surface">
+      {/* ═══ LES QUATRE FORMULES — comparables d’un regard ══════ */}
+      <Section id="nos-raids" tone="surface">
         <div className="container">
           <SectionHeader
             eyebrow="Nos raids"
-            title={<>Quatre façons <span className="text-muted">de quitter la route</span></>}
-            sub="Chaque itinéraire est modulable : le répertoire d'étapes se recombine selon vos jours disponibles, votre rythme et la saison."
+            title={<>Quatre formules, <span className="text-muted">un même terrain</span></>}
+            sub="Sur mesure, au départ de Marrakech, pour votre entreprise ou à la journée. Chaque itinéraire reste modulable : le répertoire d'étapes se recombine selon vos jours disponibles, votre rythme et la saison."
             action={
               <Link
                 to="/circuits-raid-4x4-au-maroc/"
@@ -179,7 +187,7 @@ export default function Home() {
             }
           />
           <div className="reveal mt-10 md:mt-12">
-            <FanCards cards={familles} />
+            <Formules />
           </div>
         </div>
       </Section>
@@ -192,11 +200,10 @@ export default function Home() {
             media={
               <div className="reveal">
                 <ParallaxImage
-                  src="/media/guide-jean-luc.jpg"
-                  alt="Jean-Luc Miolane, guide de raids 4x4 au Maroc, au volant sur piste"
+                  media="equipe-briefing-plateau"
                   ratio="4/3"
                   className="rounded-card"
-                  sizes="(max-width: 1024px) 100vw, 58vw"
+                  sizes="(max-width: 1024px) 92vw, 58vw"
                 />
               </div>
             }
@@ -225,8 +232,7 @@ export default function Home() {
       <section className="grain relative flex min-h-[50svh] items-end overflow-hidden md:min-h-[56svh]">
         <div className="absolute inset-0">
           <ParallaxImage
-            src="/media/dunes-franchissement.jpg"
-            alt="Franchissement de dunes lors d'un raid 4x4 dans le désert marocain"
+            media="dunes-franchissement"
             strength={70}
             ratio="16/9"
             className="!absolute inset-0 h-full w-full"
@@ -260,6 +266,78 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      {/* ═══ PREUVE SOCIALE ═════════════════════════════════════ */}
+      <Section tone="surface">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Ils y sont allés"
+            title={<>Ce qu'en disent <span className="text-muted">ceux qui sont partis</span></>}
+            sub="Voyageurs fidèles, équipes dirigeantes, premières fois. Huit témoignages, tous nominatifs."
+            action={
+              <Link
+                to="/temoignages/"
+                className="group inline-flex h-12 items-center gap-3 rounded-pill border border-line-strong px-7 font-display text-eyebrow uppercase transition-colors duration-200 hover:border-sand hover:text-sand"
+              >
+                Tous les témoignages
+                <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+              </Link>
+            }
+          />
+          <div className="mt-10 grid gap-5 md:mt-12 md:grid-cols-3 md:gap-6">
+            {PREUVES.map((t, i) => (
+              <figure
+                key={t.auteur}
+                className="reveal flex h-full flex-col rounded-card border border-line bg-ink p-7"
+                style={{ '--reveal-delay': `${i * 90}ms` } as React.CSSProperties}
+              >
+                <blockquote className="flex-1 leading-relaxed text-bone/90">{t.texte}</blockquote>
+                <figcaption className="mt-6 border-t border-line pt-5">
+                  <p className="font-display text-sm">{t.auteur}</p>
+                  <p className="mt-1 font-display text-micro uppercase text-muted">{t.contexte}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* ═══ APERÇU DE LA GALERIE ═══════════════════════════════ */}
+      <Section size="sm">
+        <div className="container">
+          <SectionHeader
+            eyebrow="En images"
+            title={<>Quatre terrains, <span className="text-muted">un seul pays</span></>}
+            sub="Oueds en eau, ruelles de ksar, ergs et bivouacs : la galerie complète des raids."
+            action={
+              <Link
+                to="/photos-raids-4x4-maroc/"
+                className="group inline-flex h-12 items-center gap-3 rounded-pill border border-line-strong px-7 font-display text-eyebrow uppercase transition-colors duration-200 hover:border-sand hover:text-sand"
+              >
+                Voir la galerie
+                <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+              </Link>
+            }
+          />
+          <div className="mt-10 grid grid-cols-2 gap-3 md:mt-12 md:grid-cols-4 md:gap-4">
+            {APERCU.map((key, i) => (
+              <Link
+                key={key}
+                to="/photos-raids-4x4-maroc/"
+                className="reveal group block overflow-hidden rounded-card"
+                style={{ '--reveal-delay': `${i * 80}ms` } as React.CSSProperties}
+              >
+                <Picture
+                  media={key}
+                  ratio="4/5"
+                  sizes="(max-width: 768px) 46vw, 23vw"
+                  imgClassName="transition-transform duration-700 ease-raid group-hover:scale-105"
+                />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </Section>
 
       {/* ═══ CTA FINAL ══════════════════════════════════════════ */}
       <Section className="border-t border-line text-center">

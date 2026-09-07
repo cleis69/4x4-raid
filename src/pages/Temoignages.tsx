@@ -32,8 +32,7 @@ export default function Temoignages() {
       <PageHero
         eyebrow="Ils y sont allés"
         h1="Témoignages"
-        image="/media/panorama-sud.jpg"
-        imageAlt="Panorama du Sud marocain depuis un circuit raid 4x4"
+        media="erg-vue-plongeante"
       />
 
       <Section>
@@ -58,7 +57,7 @@ export default function Temoignages() {
         </div>
       </Section>
 
-      <CrossLinks />
+      <CrossLinks pick={['guide', 'entreprises', 'marrakech']} />
     </>
   )
 }
